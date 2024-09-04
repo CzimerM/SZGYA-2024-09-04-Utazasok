@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System.IO;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -19,6 +20,22 @@ namespace SZGYA_2024_09_04_Utazasok
         public MainWindow()
         {
             InitializeComponent();
+            var utasadatok = new List<eUtazas>();
+            var sr = new StreamReader("../../../src/utasadat.txt", encoding: Encoding.UTF8);
+            while (!sr.EndOfStream)
+            {
+                var sor = sr.ReadLine();
+                var adatok = sor.Split(" ");
+                utasadatok.Add(new eUtazas(
+                        byte.Parse(adatok[0]),
+                        adatok[1],
+                        int.Parse(adatok[2]),
+                        adatok[3],
+                        adatok[4]
+                    ));
+            }
+            sr.Close();
+
         }
     }
 }
