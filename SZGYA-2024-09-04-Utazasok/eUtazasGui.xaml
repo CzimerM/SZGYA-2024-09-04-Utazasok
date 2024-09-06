@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SZGYA_2024_09_04_Utazasok"
         mc:Ignorable="d"
-        Title="eUtazasGui" Height="340" Width="600">
+        Title="eUtazás 2020 - Új felszállás" Height="340" Width="600">
     <StackPanel>
         <Grid>
             <Grid.ColumnDefinitions>
