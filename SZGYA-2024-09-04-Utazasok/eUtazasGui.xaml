@@ -1,0 +1,65 @@
+﻿<Window x:Class="SZGYA_2024_09_04_Utazasok.eUtazasGui"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SZGYA_2024_09_04_Utazasok"
+        mc:Ignorable="d"
+        Title="eUtazasGui" Height="340" Width="600">
+    <StackPanel>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"></ColumnDefinition>
+                <ColumnDefinition Width="1*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"></RowDefinition>
+                <RowDefinition Height="1*"></RowDefinition>
+                <RowDefinition Height="1*"></RowDefinition>
+                <RowDefinition Height="1*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Label Grid.Column="0" Grid.Row="0">Megálló sorszáma:</Label>
+            <Label Grid.Column="0" Grid.Row="1">Felszállás dátuma:</Label>
+            <Label Grid.Column="0" Grid.Row="2">Felszállás időpontja:</Label>
+            <Label Grid.Column="0" Grid.Row="3">Kártya azonosítója</Label>
+            <ComboBox Grid.Column="1" Grid.Row="0" Margin="30,5"></ComboBox>
+            <DatePicker Grid.Column="1" Grid.Row="1" Margin="30,5"></DatePicker>
+            <TextBox Grid.Column="1" Grid.Row="2" Margin="30,2"></TextBox>
+            <StackPanel Grid.Column="1" Grid.Row="3" Orientation="Horizontal">
+                <TextBox Width="150px" Margin="30,2"></TextBox>
+                <Label x:Name="lblAzonDb">0db</Label>
+            </StackPanel>
+        </Grid>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*"></ColumnDefinition>
+                <ColumnDefinition Width="1*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <GroupBox x:Name="grpbxBerlet" Grid.Row="0" Grid.Column="0" Margin="5,5" Header="Bérlet további adatai" Visibility="Visible">
+                <StackPanel>
+                    <Label>Bérlet típusa:</Label>
+                    <ComboBox Margin="5,5"></ComboBox>
+                    <Label>Bérlet érvényességi ideje:</Label>
+                    <DatePicker></DatePicker>
+                </StackPanel>
+            </GroupBox>
+            <GroupBox x:Name="grpbxJegy" Grid.Row="0" Grid.Column="0" Margin="5,5" Header="Jegy további adatai" Visibility="Collapsed">
+                <StackPanel>
+                    <Label>Felhasználható jegy:</Label>
+                    <Slider x:Name="sldrJegyDb" Margin="5,0"></Slider>
+                    <Label x:Name="lblJegyDbDisp">0db</Label>
+                </StackPanel>
+            </GroupBox>
+            <GroupBox Grid.Row="1" Grid.Column="1" Header="Bérlet vagy Jegy" Margin="20,20">
+                <StackPanel>
+                    <RadioButton x:Name="rbtnBerlet" Checked="rbtnBerletShow" IsChecked="True">Bérlet</RadioButton>
+                    <RadioButton x:Name="rbtnJegy" Checked="rbtnJegyShow">Jegy</RadioButton>
+                </StackPanel>
+            </GroupBox>
+        </Grid>
+        <Button Margin="20,5">Adatok ellenőrzése és rögzítése</Button>
+    </StackPanel>
+</Window>

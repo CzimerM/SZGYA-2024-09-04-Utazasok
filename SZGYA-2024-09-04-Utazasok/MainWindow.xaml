@@ -7,6 +7,37 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"></ColumnDefinition>
+            <ColumnDefinition Width="1*"></ColumnDefinition>
+            <ColumnDefinition Width="1*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"></RowDefinition>
+            <RowDefinition Height="1*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Column="0" Grid.Row="0">
+            <Label>1.feladat</Label>
+        </StackPanel>
+        <StackPanel Grid.Column="1" Grid.Row="0">
+            <Label>2.feladat</Label>
+        </StackPanel>
+        <StackPanel Grid.Column="3" Grid.Row="0">
+            <Label>3.feladat</Label>
+            <Label x:Name="lblHarmadik">A buszra [utas] utas akart felszállni.</Label>
+        </StackPanel>
+        <StackPanel Grid.Column="0" Grid.Row="1">
+            <Label>4.feladat</Label>
+            <Label x:Name="lblNegyedik">A buszra [utas] utas nem szállhatott fel.</Label>
+        </StackPanel>
+        <StackPanel Grid.Column="1" Grid.Row="1">
+            <Label>5.feladat</Label>
+            <TextBlock TextWrapping="WrapWithOverflow" x:Name="txtBlkOtodik">A legtöbb utas ([fő] fő) a [megálló]. megállóban próbált felszállni</TextBlock>
+        </StackPanel>
+        <StackPanel Grid.Column="2" Grid.Row="1">
+            <Label>6.feladat</Label>
+            <Label x:Name="lblHatodikEgy">Ingyenesen utazók száma: [fő] fő</Label>
+            <Label x:Name="lblHatodikKetto">A kedvezményesen utazók száma: [fő] fő</Label>
+        </StackPanel>
     </Grid>
 </Window>

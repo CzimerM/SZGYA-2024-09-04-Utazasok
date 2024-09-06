@@ -30,7 +30,8 @@ namespace SZGYA_2024_09_04_Utazasok
             Tipus = tipus;
             if (lejarat.Length > 3)
             {
-                Lejarat = new DateTime(
+                this.Felhasznalhato = -1;
+                this.Lejarat = new DateTime(
                   int.Parse(lejarat.Substring(0, 4)), //év
                   int.Parse(lejarat.Substring(4, 2)), // hónap
                   int.Parse(lejarat.Substring(6, 2))); // nap
