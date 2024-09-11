@@ -22,11 +22,11 @@
             <Label Grid.Column="0" Grid.Row="1">Felszállás dátuma:</Label>
             <Label Grid.Column="0" Grid.Row="2">Felszállás időpontja:</Label>
             <Label Grid.Column="0" Grid.Row="3">Kártya azonosítója</Label>
-            <ComboBox Grid.Column="1" Grid.Row="0" Margin="30,5"></ComboBox>
-            <DatePicker Grid.Column="1" Grid.Row="1" Margin="30,5"></DatePicker>
-            <TextBox Grid.Column="1" Grid.Row="2" Margin="30,2"></TextBox>
+            <ComboBox x:Name="cmbxSorszam" Grid.Column="1" Grid.Row="0" Margin="30,5"></ComboBox>
+            <DatePicker x:Name="dtpckrFelszallas" Grid.Column="1" Grid.Row="1" Margin="30,5"></DatePicker>
+            <TextBox x:Name="txbFelszallasIdo" Grid.Column="1" Grid.Row="2" Margin="30,2"></TextBox>
             <StackPanel Grid.Column="1" Grid.Row="3" Orientation="Horizontal">
-                <TextBox Width="150px" Margin="30,2"></TextBox>
+                <TextBox x:Name="txbKartyaAzon" Width="150px" Margin="30,2" TextChanged="txbKartyaAzon_TextChanged"></TextBox>
                 <Label x:Name="lblAzonDb">0db</Label>
             </StackPanel>
         </Grid>
@@ -41,15 +41,15 @@
             <GroupBox x:Name="grpbxBerlet" Grid.Row="0" Grid.Column="0" Margin="5,5" Header="Bérlet további adatai" Visibility="Visible">
                 <StackPanel>
                     <Label>Bérlet típusa:</Label>
-                    <ComboBox Margin="5,5"></ComboBox>
+                    <ComboBox x:Name="cmbxBerletTipus" Margin="5,5"></ComboBox>
                     <Label>Bérlet érvényességi ideje:</Label>
-                    <DatePicker></DatePicker>
+                    <DatePicker x:Name="dtpckrBerletErvenyesseg"></DatePicker>
                 </StackPanel>
             </GroupBox>
             <GroupBox x:Name="grpbxJegy" Grid.Row="0" Grid.Column="0" Margin="5,5" Header="Jegy további adatai" Visibility="Collapsed">
                 <StackPanel>
                     <Label>Felhasználható jegy:</Label>
-                    <Slider x:Name="sldrJegyDb" Margin="5,0"></Slider>
+                    <Slider Minimum="0" IsSnapToTickEnabled="True" Maximum="10" TickFrequency="1" x:Name="sldrJegyDb" Margin="5,0" ValueChanged="sldrJegyDb_ValueChanged"></Slider>
                     <Label x:Name="lblJegyDbDisp">0db</Label>
                 </StackPanel>
             </GroupBox>
@@ -60,6 +60,6 @@
                 </StackPanel>
             </GroupBox>
         </Grid>
-        <Button Margin="20,5">Adatok ellenőrzése és rögzítése</Button>
+        <Button x:Name="btnAdatokEll" Margin="20,5" Click="btnAdatokEll_Click">Adatok ellenőrzése és rögzítése</Button>
     </StackPanel>
 </Window>
