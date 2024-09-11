@@ -124,6 +124,7 @@ namespace SZGYA_2024_09_04_Utazasok
             txbKartyaAzon.Text = "";
             cmbxBerletTipus.SelectedIndex = 0;
             dtpckrBerletErvenyesseg.SelectedDate = null;
+            sldrJegyDb.Value = 0;
         }
     }
 }
