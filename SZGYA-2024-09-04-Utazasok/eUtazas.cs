@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,13 +20,21 @@ namespace SZGYA_2024_09_04_Utazasok
         public eUtazas(byte megalloSzam, string felszallas, int azonosito, string tipus, string lejarat)
         {
             Megallo = megalloSzam;
-            Felszallas = new DateTime(
-              int.Parse(felszallas.Substring(0, 4)), //év
-              int.Parse(felszallas.Substring(4, 2)), // hónap
-              int.Parse(felszallas.Substring(6, 2)), // nap
-              int.Parse(felszallas.Substring(9, 2)), // óra
-              int.Parse(felszallas.Substring(11, 2)), //perc
-              0);
+            //Felszallas = new DateTime(
+            //  int.Parse(felszallas.Substring(0, 4)), //év
+            //  int.Parse(felszallas.Substring(4, 2)), // hónap
+            //  int.Parse(felszallas.Substring(6, 2)), // nap
+            //  int.Parse(felszallas.Substring(9, 2)), // óra
+            //  int.Parse(felszallas.Substring(11, 2)), //perc
+            //  0);
+            try
+            {
+                Felszallas = DateTime.ParseExact(felszallas, "yyyyMMdd-hhmm", CultureInfo.InvariantCulture);
+            }
+            catch (FormatException)
+            {
+
+            }
             Azonosito = azonosito;
             Tipus = tipus;
             if (lejarat.Length > 3)
