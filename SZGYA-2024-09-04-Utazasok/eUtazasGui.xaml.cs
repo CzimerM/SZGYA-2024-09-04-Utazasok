@@ -72,20 +72,22 @@ namespace SZGYA_2024_09_04_Utazasok
                 return;
             }
             //felszállás idő
-            bool felszallasIdoError = false;
-            int ora = 0;
-            int perc = 0;
-            if (txbFelszallasIdo.Text.Length != 5) felszallasIdoError = true;
-            else if (txbFelszallasIdo.Text[2] != ':') felszallasIdoError |= true;
-            else if (!int.TryParse(txbFelszallasIdo.Text.Substring(0, 2), out ora)) felszallasIdoError = true;
-            else if (ora < 0 || ora > 24) felszallasIdoError = true;
-            else if (!int.TryParse(txbFelszallasIdo.Text.Substring(3, 2), out perc)) felszallasIdoError = true;
-            else if (perc < 0 || perc > 60) felszallasIdoError = true;
-            if (felszallasIdoError)
+            int ora;
+            int perc;
+            try
+            {
+                if (txbFelszallasIdo.Text[2] != ':') throw new Exception();
+                ora = int.Parse(txbFelszallasIdo.Text.Substring(0, 2));
+                perc = int.Parse(txbFelszallasIdo.Text.Substring(3, 2));
+                if (perc < 0 || perc > 60) throw new Exception();
+                if (ora < 0 || ora > 24) throw new Exception();
+            }
+            catch
             {
                 MessageBox.Show("Nem megfelelő a bemeneti karakterlánc formátuma.", "Hiba!", MessageBoxButton.OK);
                 return;
             }
+            
             //kártyaazonosító
             int azon;
             if (txbKartyaAzon.Text.Length != 7)

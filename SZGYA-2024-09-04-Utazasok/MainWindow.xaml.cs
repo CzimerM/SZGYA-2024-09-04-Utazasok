@@ -50,8 +50,8 @@ namespace SZGYA_2024_09_04_Utazasok
                     nemSzallhatfel.Add(u);
             }
             lblNegyedik.Content = $"A buszra {nemSzallhatfel.Count} utas nem szállhatott fel.";
-            var legtobbLeszallo = utasadatok.GroupBy(u => u.Megallo).OrderByDescending(g => g.Count()).FirstOrDefault().ToList();
-            txtBlkOtodik.Text = $"A legtöbb utas ({legtobbLeszallo.Count} fő) a {legtobbLeszallo.First().Megallo}. megállóban próbált felszállni";
+            var legtobbFelszallo = utasadatok.GroupBy(u => u.Megallo).OrderByDescending(g => g.Count()).FirstOrDefault().ToList();
+            txtBlkOtodik.Text = $"A legtöbb utas ({legtobbFelszallo.Count} fő) a {legtobbFelszallo.First().Megallo}. megállóban próbált felszállni";
 
             lblHatodikEgy.Content = $"Ingyenesen utazók száma: {utasadatok.Count(u => (u.Tipus == "NYP" || u.Tipus == "GYK" || u.Tipus == "RVS") && u.Felhasznalhato == -1 && u.Felszallas.Date <= u.Lejarat.Date)} fő";
             lblHatodikKetto.Content = $"A kedvezményesen utazók száma: {utasadatok.Count(u => (u.Tipus == "TAB" || u.Tipus == "NYB") && u.Felhasznalhato == -1 && u.Felszallas.Date <= u.Lejarat.Date)} fő";
