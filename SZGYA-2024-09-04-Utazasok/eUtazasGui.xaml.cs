@@ -117,6 +117,13 @@ namespace SZGYA_2024_09_04_Utazasok
             sw.WriteLine($"{cmbxSorszam.SelectedItem} {dtpckrFelszallas.SelectedDate.Value.ToString("yyyyMMdd")}-{ora.ToString("00")}{perc.ToString("00")} {txbKartyaAzon.Text} {(grpbxJegy.Visibility == Visibility.Visible ? "JGY" : cmbxBerletTipus.SelectedItem)} {(grpbxJegy.Visibility == Visibility.Visible ? sldrJegyDb.Value : dtpckrBerletErvenyesseg.SelectedDate.Value.ToString("yyyyMMdd"))}");
 
             sw.Close();
+
+            cmbxSorszam.SelectedIndex = 0;
+            dtpckrFelszallas.SelectedDate = DateTime.Now;
+            txbFelszallasIdo.Text = "";
+            txbKartyaAzon.Text = "";
+            cmbxBerletTipus.SelectedIndex = 0;
+            dtpckrBerletErvenyesseg.SelectedDate = null;
         }
     }
 }
