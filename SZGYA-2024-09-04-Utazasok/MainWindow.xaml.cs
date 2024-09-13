@@ -28,15 +28,7 @@ namespace SZGYA_2024_09_04_Utazasok
             var sr = new StreamReader("../../../src/utasadat.txt", encoding: Encoding.UTF8);
             while (!sr.EndOfStream)
             {
-                var sor = sr.ReadLine();
-                var adatok = sor.Split(" ");
-                utasadatok.Add(new eUtazas(
-                        byte.Parse(adatok[0]),
-                        adatok[1],
-                        int.Parse(adatok[2]),
-                        adatok[3],
-                        adatok[4]
-                    ));
+                utasadatok.Add(new eUtazas(sr.ReadLine()));
             }
             sr.Close();
 

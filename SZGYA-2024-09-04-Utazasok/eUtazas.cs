@@ -4,6 +4,7 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Media.Animation;
 
 namespace SZGYA_2024_09_04_Utazasok
@@ -17,33 +18,63 @@ namespace SZGYA_2024_09_04_Utazasok
         public DateTime Lejarat { get; set; }
         public int Felhasznalhato { get; set; }
 
+        public eUtazas(string sor)
+        {
+            string[] adatok = sor.Split(' ');
+            Megallo = byte.Parse(adatok[0]);
+            try
+            {
+                Felszallas = DateTime.ParseExact(adatok[1], "yyyyMMdd-hhmm", CultureInfo.InvariantCulture);
+            }
+            catch (FormatException)
+            {
+                MessageBox.Show("A forrásfileban megadott egyik dátum helytelen formátummal rendelkezik!", "Hiba!", MessageBoxButton.OK);
+            }
+            Azonosito = int.Parse(adatok[2]);
+            Tipus = adatok[3];
+            if (adatok[4].Length > 3)
+            {
+                this.Felhasznalhato = -1;
+                try
+                {
+                    Lejarat = DateTime.ParseExact(adatok[4], "yyyyMMdd", CultureInfo.InvariantCulture);
+                }
+                catch (FormatException)
+                {
+                    MessageBox.Show("A forrásfileban megadott egyik dátum helytelen formátummal rendelkezik!", "Hiba!", MessageBoxButton.OK);
+                    throw new Exception("A fájl beolvasása sikertelen volt!");
+                }
+            }
+            else
+            {
+                Felhasznalhato = int.Parse(adatok[4]);
+            }
+        }
         public eUtazas(byte megalloSzam, string felszallas, int azonosito, string tipus, string lejarat)
         {
             Megallo = megalloSzam;
-            //Felszallas = new DateTime(
-            //  int.Parse(felszallas.Substring(0, 4)), //év
-            //  int.Parse(felszallas.Substring(4, 2)), // hónap
-            //  int.Parse(felszallas.Substring(6, 2)), // nap
-            //  int.Parse(felszallas.Substring(9, 2)), // óra
-            //  int.Parse(felszallas.Substring(11, 2)), //perc
-            //  0);
             try
             {
                 Felszallas = DateTime.ParseExact(felszallas, "yyyyMMdd-hhmm", CultureInfo.InvariantCulture);
             }
             catch (FormatException)
             {
-
+                MessageBox.Show("A forrásfileban megadott egyik dátum helytelen formátummal rendelkezik!", "Hiba!", MessageBoxButton.OK);
             }
             Azonosito = azonosito;
             Tipus = tipus;
             if (lejarat.Length > 3)
             {
                 this.Felhasznalhato = -1;
-                this.Lejarat = new DateTime(
-                  int.Parse(lejarat.Substring(0, 4)), //év
-                  int.Parse(lejarat.Substring(4, 2)), // hónap
-                  int.Parse(lejarat.Substring(6, 2))); // nap
+                try
+                {
+                    this.Lejarat = DateTime.ParseExact(lejarat, "yyyyMMdd", CultureInfo.InvariantCulture);
+                }
+                catch (FormatException)
+                {
+                    MessageBox.Show("A forrásfileban megadott egyik dátum helytelen formátummal rendelkezik!", "Hiba!", MessageBoxButton.OK);
+                    throw new Exception("A fájl beolvasása sikertelen volt!");
+                }
             }
             else
             {
