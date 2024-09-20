@@ -80,7 +80,7 @@ namespace SZGYA_2024_09_04_Utazasok
             else if (!int.TryParse(txbFelszallasIdo.Text.Substring(0, 2), out ora)) felszallasIdoError = true;
             else if (ora < 0 || ora >= 24) felszallasIdoError = true;
             else if (!int.TryParse(txbFelszallasIdo.Text.Substring(3, 2), out perc)) felszallasIdoError = true;
-            else if (perc < 0 || perc > 60) felszallasIdoError = true;
+            else if (perc <= 0 || perc >= 60) felszallasIdoError = true;
             if (felszallasIdoError)
             {
                 MessageBox.Show("Nem megfelelő a bemeneti karakterlánc formátuma.", "Hiba!", MessageBoxButton.OK);
