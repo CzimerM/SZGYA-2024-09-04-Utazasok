@@ -78,7 +78,7 @@ namespace SZGYA_2024_09_04_Utazasok
             if (txbFelszallasIdo.Text.Length != 5) felszallasIdoError = true;
             else if (txbFelszallasIdo.Text[2] != ':') felszallasIdoError |= true;
             else if (!int.TryParse(txbFelszallasIdo.Text.Substring(0, 2), out ora)) felszallasIdoError = true;
-            else if (ora < 0 || ora > 24) felszallasIdoError = true;
+            else if (ora < 0 || ora >= 24) felszallasIdoError = true;
             else if (!int.TryParse(txbFelszallasIdo.Text.Substring(3, 2), out perc)) felszallasIdoError = true;
             else if (perc < 0 || perc > 60) felszallasIdoError = true;
             if (felszallasIdoError)
@@ -99,18 +99,21 @@ namespace SZGYA_2024_09_04_Utazasok
                 return;
             }
 
-            //bérlet típus
-            if (cmbxBerletTipus.SelectedIndex == 0)
+            if ((bool)rbtnBerlet.IsChecked)
             {
-                MessageBox.Show("Nem adta meg a bérlet típusát!", "Hiba!", MessageBoxButton.OK);
-                return;
-            }
-            //bérlet érvényesség
-            if (dtpckrBerletErvenyesseg.SelectedDate == null)
-            {
-                MessageBox.Show("Nem adta meg a bérlet érvényességi idejét!", "Hiba!", MessageBoxButton.OK);
-                return;
-            }
+                //bérlet típus
+                if (cmbxBerletTipus.SelectedIndex == 0)
+                {
+                    MessageBox.Show("Nem adta meg a bérlet típusát!", "Hiba!", MessageBoxButton.OK);
+                    return;
+                }
+                //bérlet érvényesség
+                if (dtpckrBerletErvenyesseg.SelectedDate == null)
+                {
+                    MessageBox.Show("Nem adta meg a bérlet érvényességi idejét!", "Hiba!", MessageBoxButton.OK);
+                    return;
+                }
+            } 
 
             StreamWriter sw = new StreamWriter("../../../src/utasadat.txt", true, Encoding.UTF8);
 
