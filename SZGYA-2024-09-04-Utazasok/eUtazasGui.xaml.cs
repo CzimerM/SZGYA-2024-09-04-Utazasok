@@ -80,7 +80,7 @@ namespace SZGYA_2024_09_04_Utazasok
                 ora = int.Parse(txbFelszallasIdo.Text.Substring(0, 2));
                 perc = int.Parse(txbFelszallasIdo.Text.Substring(3, 2));
                 if (perc < 0 || perc > 60) throw new Exception();
-                if (ora < 0 || ora > 24) throw new Exception();
+                if (ora < 0 || ora >= 24) throw new Exception(); 
             }
             catch
             {
@@ -101,17 +101,20 @@ namespace SZGYA_2024_09_04_Utazasok
                 return;
             }
 
-            //bérlet típus
-            if (cmbxBerletTipus.SelectedIndex == 0)
+            if ((bool)rbtnBerlet.IsChecked)
             {
-                MessageBox.Show("Nem adta meg a bérlet típusát!", "Hiba!", MessageBoxButton.OK);
-                return;
-            }
-            //bérlet érvényesség
-            if (dtpckrBerletErvenyesseg.SelectedDate == null)
-            {
-                MessageBox.Show("Nem adta meg a bérlet érvényességi idejét!", "Hiba!", MessageBoxButton.OK);
-                return;
+                //bérlet típus
+                if (cmbxBerletTipus.SelectedIndex == 0)
+                {
+                    MessageBox.Show("Nem adta meg a bérlet típusát!", "Hiba!", MessageBoxButton.OK);
+                    return;
+                }
+                //bérlet érvényesség
+                if (dtpckrBerletErvenyesseg.SelectedDate == null)
+                {
+                    MessageBox.Show("Nem adta meg a bérlet érvényességi idejét!", "Hiba!", MessageBoxButton.OK);
+                    return;
+                }
             }
 
             StreamWriter sw = new StreamWriter("../../../src/utasadat.txt", true, Encoding.UTF8);
