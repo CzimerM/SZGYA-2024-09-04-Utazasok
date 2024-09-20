@@ -79,7 +79,7 @@ namespace SZGYA_2024_09_04_Utazasok
                 if (txbFelszallasIdo.Text[2] != ':') throw new Exception();
                 ora = int.Parse(txbFelszallasIdo.Text.Substring(0, 2));
                 perc = int.Parse(txbFelszallasIdo.Text.Substring(3, 2));
-                if (perc < 0 || perc > 60) throw new Exception();
+                if (perc <= 0 || perc >= 60) throw new Exception();
                 if (ora < 0 || ora >= 24) throw new Exception(); 
             }
             catch
